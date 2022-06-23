@@ -20,3 +20,28 @@ export const createPost=(post)=>async(dispatch)=>{
         console.log(error.message);
     }
 }
+export const updatePost=(currentID,post)=>async(dispatch)=>{
+    try {
+        const {data}=await api.updatePost(currentID,post);
+        dispatch({type:"UPDATE",payload:data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const deletePost=(currentID)=>async(dispatch)=>{
+    try {
+        const {data}=await api.deletePost(currentID);
+        dispatch({type:"DELETE",payload:data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const likeCount=(currentID)=>async(dispatch)=>{
+    try {
+        const {data}=await api.likeCount(currentID);
+        dispatch({type:"LIKE_COUNT",payload:data});
+
+    } catch (error) {
+        console.log(error);
+    }
+}
